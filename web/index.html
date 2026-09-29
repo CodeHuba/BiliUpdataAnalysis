@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8fbfd" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>UP 数据观察 · 王师傅の日记</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%2300a6df'/%3E%3Cpath d='M8 24h6l4-12 5 17 4-9h5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/styles.css?v=1.5" />
+    <link rel="stylesheet" href="/danmaku.css?v=1.5" />
+    <script src="/app.js?v=1.5" defer></script>
+    <script src="/danmaku.js?v=1.5" defer></script>
+  </head>
+  <body>
+    <aside class="rail" aria-label="页面导航">
+      <a class="brand" href="#overview" title="UP 数据观察" aria-label="UP 数据观察">B</a>
+      <nav>
+        <a href="#overview" class="rail-link active" title="总览" aria-label="总览">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </a>
+        <a href="#videos" class="rail-link" title="视频表现" aria-label="视频表现">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 8 6 4-6 4z"/></svg>
+        </a>
+        <a href="#danmaku" class="rail-link" title="弹幕观察" aria-label="弹幕观察">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="m7 18-1 3 5-3M7 9h10M7 13h7"/></svg>
+        </a>
+        <a href="#collection" class="rail-link" title="采集状态" aria-label="采集状态">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2"/></svg>
+        </a>
+      </nav>
+      <div class="rail-foot" title="本机运行">●</div>
+    </aside>
+
+    <div class="shell">
+      <header class="topbar">
+        <div class="topbar-title"><span class="topbar-icon">▦</span><strong>总览</strong><span>UP 主公开数据监测</span></div>
+        <div class="topbar-right"><span class="connection-pill"><i></i>本机看板</span><span class="topbar-profile">王</span></div>
+      </header>
+
+      <main class="workspace" id="overview">
+        <div class="heading-row">
+          <div>
+            <div class="eyebrow">BILIBILI / CREATOR INSIGHTS</div>
+            <h1>王师傅の日记 <span class="heading-tag">最近 10 条视频</span></h1>
+            <p>粉丝增长、播放变化与互动表现</p>
+          </div>
+          <div class="heading-actions">
+            <span class="updated" id="updated-at">读取采样记录中…</span>
+            <button class="refresh-button" id="collect-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.8 9A7 7 0 0 1 18 7l2 5M4 12l2 5A7 7 0 0 0 18.2 15"/></svg>立即采集</button>
+          </div>
+        </div>
+
+        <div class="window-bar" aria-label="数据对比范围">
+          <div class="window-tabs" role="group" aria-label="对比时间窗口">
+            <button class="window-tab active" type="button" data-window="24h" aria-pressed="true">最近 24 小时</button>
+            <button class="window-tab" type="button" data-window="latest" aria-pressed="false">最近一次采样</button>
+          </div>
+          <div class="coverage" id="coverage">正在计算实际覆盖时长…</div>
+        </div>
+
+        <div class="kpi-grid" id="kpi-grid" aria-live="polite"></div>
+
+        <div class="chart-grid">
+          <section class="panel trend-panel" aria-labelledby="fan-trend-title">
+            <div class="panel-head"><div><div class="section-kicker">账号表现</div><h2 id="fan-trend-title">粉丝净增长轨迹</h2><p>相对基准采样的变化 · 横轴按实际时间间隔</p></div><span class="panel-caption" id="history-count">—</span></div>
+            <div class="trend-chart" id="fan-chart"></div>
+          </section>
+          <section class="panel growth-panel" aria-labelledby="growth-title">
+            <div class="panel-head"><div><div class="section-kicker">视频表现</div><h2 id="growth-title">播放增长排行</h2><p>同一对比区间 · 只计有基准的监测视频</p></div><span class="panel-caption">TOP 5</span></div>
+            <div class="growth-list" id="growth-list"></div>
+          </section>
+        </div>
+
+        <div class="movement-grid">
+          <section class="panel movement-panel" aria-labelledby="interaction-title">
+            <div class="panel-head"><div><div class="section-kicker">互动表现</div><h2 id="interaction-title">互动增长构成</h2><p>点赞、投币等动作增量；不代表独立用户数</p></div></div>
+            <div class="breakdown-list" id="interaction-breakdown"></div>
+          </section>
+          <section class="panel movement-panel" aria-labelledby="interval-title">
+            <div class="panel-head"><div><div class="section-kicker">变化记录</div><h2 id="interval-title">逐次采样变化</h2><p>每段均显示实际采样间隔，便于识别数据缺口</p></div><span class="panel-caption" id="interval-count">—</span></div>
+            <div class="interval-list" id="interval-list"></div>
+          </section>
+        </div>
+
+        <section class="panel video-trend-panel" id="video-trend" aria-labelledby="video-trend-title">
+          <div class="panel-head trend-head"><div><div class="section-kicker">单视频分析</div><h2 id="video-trend-title">视频数据变化趋势</h2><p>选一条视频，看每次采样的实际增量与累计变化</p></div><span class="panel-caption" id="video-history-count">—</span></div>
+          <div class="video-trend-controls">
+            <label class="select-label">视频<select id="trend-video-select" aria-label="选择视频"></select></label>
+            <label class="select-label metric-select-label">指标<select id="trend-metric-select" aria-label="选择指标"><option value="view">播放</option><option value="like">点赞</option><option value="coin">投币</option><option value="favorite">收藏</option><option value="reply">评论</option><option value="danmaku">弹幕</option><option value="share">分享</option></select></label>
+            <div class="trend-mode" role="group" aria-label="图表模式"><button class="mode-tab active" type="button" data-mode="rate" aria-pressed="true">区间均速</button><button class="mode-tab" type="button" data-mode="cumulative" aria-pressed="false">累计值</button></div>
+          </div>
+          <div class="picker-label">按封面选择视频 <span>点击封面切换趋势</span></div>
+          <div class="video-picker" id="video-picker" aria-label="最近 10 条视频封面"></div>
+          <div class="video-trend-summary" id="video-trend-summary"></div>
+          <div class="video-trend-chart" id="video-trend-chart"></div>
+          <div class="trend-explanation" id="trend-explanation"></div>
+        </section>
+
+        <section class="panel danmaku-panel" id="danmaku" aria-labelledby="danmaku-title">
+          <div class="panel-head danmaku-head">
+            <div><div class="section-kicker">DANMAKU / CONTENT INSIGHTS</div><h2 id="danmaku-title">弹幕观察</h2><p>最近 10 条视频 · 从可读取弹幕中寻找热议片段与共同热梗</p></div>
+            <button class="refresh-button" id="danmaku-collect-button" type="button">采集弹幕</button>
+          </div>
+          <div class="danmaku-note" id="danmaku-status">读取弹幕数据中…</div>
+          <div class="danmaku-kpis" id="danmaku-kpis"></div>
+
+          <div class="danmaku-section-head"><div><h3>十条视频的弹幕热度</h3><p>横轴为各视频的播放进度；深色代表该片段弹幕更集中</p></div><div class="danmaku-tabs" role="group" aria-label="热度图范围"><button class="danmaku-scope active" data-scope="all" aria-pressed="true" type="button">全部可读取</button><button class="danmaku-scope" data-scope="window" aria-pressed="false" type="button">当前窗口</button></div></div>
+          <div class="danmaku-heatmap" id="danmaku-heatmap"></div>
+          <p class="danmaku-help">每行颜色按该视频自身最高密度归一；跨视频请比较右侧条数。点击封面或热区可查看该视频详情。</p>
+
+          <div class="danmaku-divider"></div>
+          <div class="danmaku-detail-head" id="danmaku-detail-head"></div>
+          <div class="danmaku-chart-grid">
+            <div class="danmaku-subpanel"><h3>视频内时间 · 哪里最热闹</h3><p>按视频进度分桶；浅色为全部已存弹幕，深色为当前窗口</p><div id="danmaku-density" class="danmaku-bars"></div></div>
+            <div class="danmaku-subpanel"><h3>现实时间 · 什么时候发送</h3><p>北京时间 · 当前窗口内可读取弹幕的发送时间</p><div id="danmaku-timeline" class="danmaku-bars"></div></div>
+          </div>
+          <div class="danmaku-content-grid">
+            <div class="danmaku-subpanel"><div class="danmaku-section-head"><div><h3>热门弹幕</h3><p>按相同或去标点后的近似原句重复条数排序</p></div><div class="danmaku-tabs" role="group" aria-label="热门弹幕类别"><button class="danmaku-kind active" data-kind="phrases" aria-pressed="true" type="button">热门原句</button><button class="danmaku-kind" data-kind="reactions" aria-pressed="false" type="button">刷屏反应</button></div></div><div id="danmaku-hot" class="danmaku-hot-list"></div></div>
+            <div class="danmaku-subpanel"><h3>热点片段</h3><p>选出弹幕最集中的三个分钟段；相邻峰值合并</p><div id="danmaku-hotspots" class="danmaku-hotspots"></div><div class="danmaku-shared"><h3>跨视频共同热梗</h3><div id="danmaku-shared"></div></div></div>
+          </div>
+          <div class="danmaku-search"><label for="danmaku-query">检索弹幕原文</label><div><input id="danmaku-query" type="search" maxlength="100" placeholder="输入词句，查看当前视频的弹幕" /><button id="danmaku-search-button" type="button">搜索</button></div><div id="danmaku-search-results"></div></div>
+          <p class="danmaku-help">首次采集建立历史基线；“最近一次采样”需要两轮完整采集。可读取样本可能少于视频页累计弹幕数，二者独立显示。重复条数不代表不同发送者人数。</p>
+        </section>
+
+        <section class="panel videos-panel" id="videos" aria-labelledby="videos-title">
+          <div class="panel-head videos-head"><div><div class="section-kicker">监测视频池</div><h2 id="videos-title">最近 10 条视频</h2><p>累计值与采样区间增量分开显示</p></div><span class="panel-caption" id="video-count">—</span></div>
+          <div class="table-scroll"><table><thead><tr><th>视频</th><th>累计播放</th><th>播放增长</th><th>增速走势</th><th>点赞增长</th><th>评论增长</th><th>收藏增长</th><th>发布时间</th></tr></thead><tbody id="video-rows"></tbody></table></div>
+          <p class="table-note">小柱图只比较同一视频在不同采样区间的平均每小时播放增长；跨视频请看“播放增长”数值。</p>
+        </section>
+
+        <section class="panel status-panel" id="collection" aria-labelledby="collection-title">
+          <div class="panel-head"><div><div class="section-kicker">数据质量</div><h2 id="collection-title">采集状态</h2></div></div>
+          <div class="status-grid" id="status-grid"></div>
+        </section>
+        <footer>公开页面采样 · 区间增量基于两次成功采样计算 · 数据仅供本机分析</footer>
+      </main>
+    </div>
+  </body>
+</html>

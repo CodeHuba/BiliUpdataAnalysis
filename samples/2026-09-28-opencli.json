@@ -1,0 +1,59 @@
+{
+  "sampled_at_utc": "2026-09-28T09:08:00+00:00",
+  "source": "OpenCLI connected Chrome browser",
+  "creator_uid": "3546619609876957",
+  "profile": {
+    "followers_display": "44.7万",
+    "followers_exact": 447245,
+    "title": "王师傅の日记的个人空间-王师傅の日记个人主页-哔哩哔哩视频",
+    "url": "https://space.bilibili.com/3546619609876957"
+  },
+  "videos": [
+    {
+      "bvid": "BV1gqai6iEeQ",
+      "aid": "117346945538615",
+      "title": "进入西藏！入住318上的温泉酒店？享受的一天。",
+      "author": "王师傅の日记 (mid: 3546619609876957)",
+      "category": "",
+      "publish_time": "2026-09-28 06:29",
+      "duration": "50m5s (3005s)",
+      "view": "64199",
+      "danmaku": "2767",
+      "reply": "1032",
+      "like": "7082",
+      "coin": "7694",
+      "favorite": "1410",
+      "share": "81",
+      "parts": "1",
+      "thumbnail": "http://i2.hdslb.com/bfs/archive/21c07a78169543e2e47d21ae0b2699c559aab145.jpg",
+      "description": "",
+      "requires_payment": "false",
+      "payment_type": "",
+      "pay_preview": "false",
+      "redirect_url": ""
+    },
+    {
+      "bvid": "BV1TDab6CE1W",
+      "aid": "117340855343024",
+      "title": "经历318最高海拔！4700米速降到2700！风景最好的一天。",
+      "author": "王师傅の日记 (mid: 3546619609876957)",
+      "category": "",
+      "publish_time": "2026-09-27 03:45",
+      "duration": "47m51s (2871s)",
+      "view": "266554",
+      "danmaku": "8739",
+      "reply": "2336",
+      "like": "19880",
+      "coin": "22608",
+      "favorite": "3529",
+      "share": "352",
+      "parts": "1",
+      "thumbnail": "http://i1.hdslb.com/bfs/archive/eecfff89f95e9c3d08f96cb662dc7e52e9d29283.jpg",
+      "description": "",
+      "requires_payment": "false",
+      "payment_type": "",
+      "pay_preview": "false",
+      "redirect_url": ""
+    }
+  ]
+}
